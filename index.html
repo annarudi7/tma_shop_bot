@@ -1,0 +1,37 @@
+<!DOCTYPE html>
+<html lang="ru">
+<head>
+  <meta charset="UTF-8">
+  <meta name="viewport" content="width=device-width, initial-scale=1.0">
+  <title>Shop Mini App</title>
+  <script src="https://telegram.org/js/telegram-web-app.js"></script>
+  <style>
+    body { font-family: sans-serif; background: var(--tg-theme-bg-color, #fff); color: var(--tg-theme-text-color, #000); padding: 16px; margin: 0; }
+    .card { border: 1px solid #ccc; border-radius: 8px; padding: 12px; margin-bottom: 12px; text-align: center; }
+    button { background: var(--tg-theme-button-color, #2481cc); color: var(--tg-theme-button-text-color, #fff); border: none; padding: 10px 16px; border-radius: 6px; cursor: pointer; }
+  </style>
+</head>
+<body>
+  <h2>Каталог товаров</h2>
+  <div class="card">
+    <h3>Товар 1</h3>
+    <p>Цена: 500 ₽</p>
+    <button onclick="buyProduct('Товар 1', 500)">Заказать</button>
+  </div>
+  <div class="card">
+    <h3>Товар 2</h3>
+    <p>Цена: 1200 ₽</p>
+    <button onclick="buyProduct('Товар 2', 1200)">Заказать</button>
+  </div>
+
+  <script>
+    const tg = window.Telegram.WebApp;
+    tg.expand();
+
+    function buyProduct(name, price) {
+      const data = { product: name, price: price };
+      tg.sendData(JSON.stringify(data));
+    }
+  </script>
+</body>
+</html>
